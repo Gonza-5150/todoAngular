@@ -10,6 +10,7 @@ import { WelcomeDataService } from '../service/data/welcome-data.service';
 })
 export class WelcomeComponent implements OnInit {
   message = 'Some Welcome Shit'
+  welcomeMessageFromService:string =''
   name = ''
 
   //INJECT ActivatedRoute
@@ -25,8 +26,33 @@ export class WelcomeComponent implements OnInit {
   }
 
   getWelcomeMessasge() {
-    console.log(this.service.executeHelloWorldBeanService());
-    this.service.executeHelloWorldBeanService().subscribe();
+    //console.log(this.service.executeHelloWorldBeanService());
+
+    this.service.executeHelloWorldBeanService().subscribe(
+      response => this.handleSuccesfullResponse(response),
+      error => this.handleErrorResponse(error)
+    );
     //console.log("get welcome messages")
   }
+
+  getWelcomeMessasgeWithParameter() {
+    //console.log(this.service.executeHelloWorldBeanService());
+
+    this.service.executeHelloWorldServicePathVariable(this.name).subscribe(
+      response => this.handleSuccesfullResponse(response),
+      error => this.handleErrorResponse(error)
+    );
+    //console.log("get welcome messages")
+  }
+
+  handleSuccesfullResponse(response: any){
+    this.welcomeMessageFromService = response.message;
+    //console.log(response);
+    //console.log(response.message);
+  }
+
+  handleErrorResponse(error: any) {
+    this.welcomeMessageFromService = error.error.message;
+  }
+
 }
