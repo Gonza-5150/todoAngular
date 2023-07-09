@@ -2,3 +2,8 @@
 <div class="container">
   welcome to my crappy Angular project {{ name }}! You can manage your todos <a routerLink="/todos">here</a>
 </div>
+
+<div class="container">
+  Click here to get a customized welcome message
+  <button class="btn btn-success" (click)="getWelcomeMessasge()">Get welcome messages</button>
+</div>
