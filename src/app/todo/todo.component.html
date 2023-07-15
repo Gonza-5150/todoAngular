@@ -1,5 +1,11 @@
 <H1>Todo</H1>
 <div class="container">
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && todoForm.invalid">
+    Enter valid values
+  </div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && targetDate.invalid">
+    Enter valid Targe Date
+  </div>
   <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
     <fieldset class="form-group">
       <label for="">Description</label>
@@ -15,6 +21,7 @@
       <label for="">Target Date</label>
       <input
         type="date"
+        #targetDate="ngModel"
         [ngModel]="todo.targetDate | date : 'yyy-MM-dd'"
         (ngModelChange)="todo.targetDate = $event"
         class="form-control"
