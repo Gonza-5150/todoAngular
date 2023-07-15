@@ -26,5 +26,8 @@ retriveTodo(username: any, id: any) {
 updateTodo(username: any, id: any, todo: any) {
   return this.http.put<Todo>(`http://localhost:8080/users/${username}/todos/${id}`, todo);
 }
+createTodo(username: any, todo: any) {
+  return this.http.post(`http://localhost:8080/users/${username}/todos}`, todo);
+}
 
 }
