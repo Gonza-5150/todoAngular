@@ -23,8 +23,8 @@ export class TodoComponent implements OnInit {
 
     if (this.id != -1) {
       this.todoService
-        .retriveTodo('Gonza', this.id)
-        .subscribe(data => this.todo = data);
+        .retrieveTodo('Gonza', this.id)
+        .subscribe(data => this.todo = data)
     }
   }
 
@@ -36,7 +36,7 @@ export class TodoComponent implements OnInit {
         .subscribe(data => {
           console.log(data)
           this.router.navigate(['todos']);
-        });
+        })
     } else {
       this.todoService
         .updateTodo('Gonza', this.id, this.todo)
